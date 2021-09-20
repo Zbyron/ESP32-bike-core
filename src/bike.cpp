@@ -36,6 +36,7 @@ void Bike::updateBikeData() {
 void Bike::bikeSerialOut() {
   Serial.println("Ped: ");
   Serial.println(nImpulse);
+  Serial.write(nImpulse);
   Serial.println("  Km: ");
   Serial.println(nKmTraveled);
  
