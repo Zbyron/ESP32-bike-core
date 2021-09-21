@@ -34,20 +34,7 @@ void Bike::updateBikeData() {
 }
 
 void Bike::bikeSerialOut() {
-  Serial.println("Ped: ");
-  Serial.println(nImpulse);
-  Serial.write(nImpulse);
-  Serial.println("  Km: ");
-  Serial.println(nKmTraveled);
- 
-  Serial.println("Time (secs): ");
-  Serial.println(nSeconds);
-
-  Serial.println("Speed AVG: ");
-  Serial.println(nAverageSpeed);
-  
-  Serial.println("Calories: ");
-  Serial.println(nCalories);
+  Serial.write("1\n");
 }
 
 void Bike::readBikeInput() {
