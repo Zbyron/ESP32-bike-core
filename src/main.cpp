@@ -48,6 +48,8 @@ void heartBeat(){
   if (millis() > last_time + 2000)
     {
         Serial.write("ESP32_BIKE_ALIVE\n");
+        Serial.println("ESP32_BIKE_ALIVE");
+
         last_time = millis();
     }
 }
@@ -56,7 +58,6 @@ void setup() {
   Wire.begin();
   initDisplay();
   Serial.begin(9600);
-  Serial.println("Starting...");
 }
 
 void loop() {
