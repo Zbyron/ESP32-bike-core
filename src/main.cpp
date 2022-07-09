@@ -47,8 +47,10 @@ void updateDisplay(){
 void heartBeat(){
   if (millis() > last_time + 2000)
     {
-        Serial.write("ESP32_BIKE_ALIVE\n");
-        Serial.println("ESP32_BIKE_ALIVE");
+        Serial.write("ESP32_BIKE_ALIVE\r\n");
+        Serial.flush();
+        // Serial.println("ESP32_BIKE_ALIVE");
+        // Serial.flush();
 
         last_time = millis();
     }
