@@ -8,7 +8,7 @@
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
 #define OLED_RESET     -1 // Reset pin # (or -1 if sharing Arduino reset pin)
-
+unsigned long last_time = 0;
 Bike bike(17);
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
@@ -35,13 +35,21 @@ void updateDisplay(){
   display.print(String(bike.nMetersTraveled) + "M");
   
   display.setCursor(0, 40);
-  display.print("Time: " + String(bike.nSeconds) + "s");
+  display.print("PEDS: " + String(bike.nImpulse));
 
 
   display.setCursor(0, 50);
   display.print("Calories: " + String(bike.nCalories));
  
   display.display(); 
+}
+
+void heartBeat(){
+  if (millis() > last_time + 2000)
+    {
+        Serial.write("ESP32_BIKE_ALIVE\n");
+        last_time = millis();
+    }
 }
 
 void setup() {
@@ -54,6 +62,7 @@ void setup() {
 void loop() {
 
   bike.readBikeInput();
+  heartBeat();
   updateDisplay();  
   
 }
