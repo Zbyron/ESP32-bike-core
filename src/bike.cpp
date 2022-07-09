@@ -36,9 +36,6 @@ void Bike::updateBikeData() {
 void Bike::bikeSerialOut() {
   Serial.write("ESP32_BIKE_PED\r\n");
   Serial.flush();
-
-  // Serial.println("ESP32_BIKE_PED");
-  // Serial.flush();
 }
 
 void Bike::readBikeInput() {
